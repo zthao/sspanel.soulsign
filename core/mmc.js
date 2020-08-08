@@ -2,7 +2,7 @@
 // @name              mmc
 // @namespace         https://soulsign.inu1255.cn/scripts/218
 // @updateURL         https://soulsign.inu1255.cn/script/Miao-Mico/mmc
-// @version           1.2.12
+// @version           1.2.13
 // @author            Miao-Mico
 // @expire            2000000
 // @domain            *.*
@@ -13,12 +13,13 @@
 (function () {
     const about = {
         author: "M-M", // 作者
-        version: "1.2.12", // 版本
+        version: "1.2.13", // 版本
         licence: "Apache-2.0 License", // 许可
         trademark: "❤️ mmc ❤️", // 标志
     }; // 关于
 
     const emphasizes = { correct: "✔", system_fault: "⁉️", site_error: "❗" };
+    const colors = { correct: "#4caf50", system_fault: "OrangeRed", site_error: "Orange" };
 
     const system = "system";
 
@@ -89,36 +90,43 @@
         let string_sf = "";
 
         for (let cnt = 0; cnt < arguments.length; cnt++) {
-            let format = {
-                emphasize: "",
-                object: "",
-                message: "",
-            };
+            let argument = arguments[cnt],
+                format = {
+                    emphasize: "",
+                    object: "",
+                    message: "",
+                };
 
             try {
-                let emphasize = 0;
-                if (RegExp(system).test(arguments[cnt].object.toString())) {
-                    if (arguments[cnt].code) {
+                let emphasize = 0,
+                    color = colors.correct;
+
+                format.message = `${argument.message}`;
+
+                if (RegExp(system).test(argument.object.toString())) {
+                    if (argument.code) {
                         emphasize = emphasizes.system_fault;
+                        color = colors.system_fault;
                     }
                 } else {
-                    format.object = `${arguments[cnt].object.domain}: `;
-
-                    if (arguments[cnt].code) {
+                    if (argument.code) {
                         emphasize = emphasizes.site_error;
+                        color = colors.site_error;
                     }
-                }
 
-                if (!arguments[cnt].code) {
+                    format.object = `<a href="${argument.object.url.get}" target="_blank"><font color="${color}">${argument.object.domain}: `;
+                    format.message = format.message + "</font></a>";
+                }
+                if (!argument.code) {
                     emphasize = emphasizes.correct;
                 }
 
-                format.emphasize = ` ${emphasize} `;
-                format.message = arguments[cnt].message;
+                // format.emphasize = `</br> ${emphasize} `;
+                format.emphasize = `</br>`;
             } catch (exception) {
                 format.emphasize = "";
                 format.object = "";
-                format.message = arguments[cnt];
+                format.message = argument;
             } // 读取格式
 
             await system_log_core("system_format()", 0, format);
