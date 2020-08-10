@@ -228,8 +228,23 @@
 
 ## 更新
 
+- 1.2.13
+
+  1. 支持 `执行结果` 中带有 `颜色`、`超链接`，需使用 [`soulsign`](https://raw.githubusercontent.com/Miao-Mico/soulsign-chrome/dev/build.zip)<sup>pre-relsase</sup>
+
+     - 这个特性更改已经 pull 到主仓库了，审阅暂时未通过，**可能造成危险**，`体验过后请立即删除`，但正在争取把危险隔离掉
+
+     - 现在的也很粗糙，仅供预览
+
+     ##### 使用方法
+
+     1. 本地安装 [`soulsign`](https://raw.githubusercontent.com/Miao-Mico/soulsign-chrome/dev/build.zip)<sup>pre-relsase</sup>
+     2. 替换想体验脚本 `.core` 中的 `/mmc.js` 为 `/mmc.dev.js`
+
+<details>
+<summary>历史</summary></summary>
+
 - 1.0.0
-  
   1. 发布脚本
   
 - [1.1.0](https://github.com/Miao-Mico/sspanel.soulsign/tree/267f8a66125afc7ec8a8d6f565e4f4a08347b709)<sup>**stable**</sup>
@@ -341,20 +356,9 @@
   4. 默认 `param_config` 可选项均加入应用脚本
   5. 修复 `param_config.keyword_signed` 读取问题
   6. 修复 `method_site()` 中多个 `path` 自动更新的规则问题，梅开二度？
-  7. 修复 `notify_sign_in()` 的参数问题
-  
-- 1.2.13
+  7. 修复 `notify_sign_in()` 的参数问题 
 
-  1. 支持 `执行结果` 中带有 `颜色`、`超链接`，需使用 [`soulsign`](https://raw.githubusercontent.com/Miao-Mico/soulsign-chrome/dev/build.zip)<sup>pre-relsase</sup>
-
-     这个特性更改已经 pull 到主仓库了，正在等待审阅
-
-     现在的也很粗糙，仅供预览
-
-     ##### 使用方法
-
-     1. 本地安装 [`soulsign`](https://raw.githubusercontent.com/Miao-Mico/soulsign-chrome/dev/build.zip)<sup>pre-relsase</sup>
-     2. 替换想体验脚本 `.core` 中的 `/mmc.js` 为 `/mmc.dev.js`
+</details>
 
 ## 鸣谢
 
