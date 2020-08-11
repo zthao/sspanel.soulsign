@@ -240,6 +240,7 @@
 
      1. 本地安装 [`soulsign`](https://raw.githubusercontent.com/Miao-Mico/soulsign-chrome/dev/build.zip)<sup>pre-relsase</sup>
      2. 替换想体验脚本 `.core` 中的 `/mmc.js` 为 `/mmc.dev.js`
+  2. 修复 `网络连接中断时` 的异常情况
 
 <details>
 <summary>历史</summary></summary>
